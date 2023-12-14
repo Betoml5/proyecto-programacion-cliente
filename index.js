@@ -1,9 +1,5 @@
 import { EQUIPOS_LIGAMX } from "./db.js";
-const URL =
-  "https://newsapi.org/v2/top-headlines?country=mx&category=sports&apiKey=bb73485e020041b7aee3e2be317f13e7";
-
-const BEAPI_URL =
-  "https://apiclient.besoccerapps.com/scripts/api/api.php?key=8688aa381310bb017be76e16762a4019";
+const URL = `https://newsapi.org/v2/top-headlines?country=mx&category=sports&apiKey=${process.env.API_KEY}`;
 
 const $container = document.querySelector(".container");
 const $containerNews = document.querySelector(".container__news-items");
