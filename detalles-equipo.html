@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+
+    <title>Fanático 21</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__wrapper">
+        <h1>
+          <a href="./index.html">Fanático 21</a>
+        </h1>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="container__team"></section>
+    </main>
+
+    <script type="module" src="index.js"></script>
+  </body>
+</html>
+
+<script>
+  const $container__team = document.querySelector(".container__team");
+  const renderTeamDetails = (team) => {
+    const html = `
+    <div class="container__team-item">
+      <div class="container__team-item-name">
+          <h2>${team.nombre}</h2>
+          <div class="container__team-item-image-wrapper">
+              <img src="${team.logo}" alt="${team.nombre}" />
+          </div>
+      </div>
+      <p>Estadio: ${team.estadio}</p>
+      <p>Técnico: ${team.tecnico}  </p>
+      <div class="container__team-item-plantilla">
+        <h3>Plantilla</h3>
+        ${team.jugadores
+          .map(
+            (jugador) => `
+          <div>
+            <p>
+              <b> ${jugador.posicion} </b>
+            </p>
+            <p>${jugador.nombre}</p>
+          </div>
+        `
+          )
+          .join("")
+          .replace(/,/g, "")}
+
+      </div>
+    </div>
+  `;
+    $container__team.innerHTML = html;
+  };
+
+  if (sessionStorage.team !== undefined) {
+    const team = JSON.parse(sessionStorage.team);
+    renderTeamDetails(team);
+  }
+
+  if (sessionStorage.team === undefined) {
+    window.location.href = "./index.html";
+  }
+</script>
