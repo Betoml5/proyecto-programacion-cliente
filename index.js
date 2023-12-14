@@ -1,5 +1,6 @@
 import { EQUIPOS_LIGAMX } from "./db.js";
-const URL = `https://newsapi.org/v2/top-headlines?country=mx&category=sports&apiKey=${process.env.API_KEY}`;
+const URL =
+  "https://newsapi.org/v2/top-headlines?country=mx&category=sports&apiKey=bb73485e020041b7aee3e2be317f13e7";
 
 const $container = document.querySelector(".container");
 const $containerNews = document.querySelector(".container__news-items");
